@@ -1221,10 +1221,6 @@ appendOptions(selectX, customMetricOrder);
 appendOptions(selectY, customMetricOrder);
 appendOptions(selectSize, customMetricOrder);
 
-// Optionally, set default values
-selectX.property("value", customMetricOrder.find(metric => !metric.text.startsWith("CATEGORY:"))); // First non-descriptor metric
-selectY.property("value", customMetricOrder.find(metric => !metric.text.startsWith("CATEGORY:"))); // First non-descriptor metric
-selectSize.property("value", customMetricOrder.find(metric => !metric.text.startsWith("CATEGORY:"))); // First non-descriptor metric
 
   var svg = d3.select("#scatter-plot")
     .attr("width", width + margin.left + margin.right)
