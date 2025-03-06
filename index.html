@@ -650,7 +650,7 @@ body.dark-mode #SFctr td {
 	
 <svg id="scatter-plot"></svg>
 <div class="container">
-  <input type="text" id="search-bar" placeholder="Search player..." data-i18n="search_player_placeholder">
+  <input type="text" id="search-bar" placeholder="Search player..." data-i18n-placeholder="search_player_placeholder">
 
 
   <select id="select-league">
@@ -2169,11 +2169,8 @@ function applyLanguage(language) {
 
       // Update placeholders for elements with data-i18n-placeholder attribute
       document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-        const keys = element.getAttribute('data-i18n-placeholder').split('.');
-        let value = translations;
-        for (const key of keys) {
-          value = value[key];
-        }
+        const key = element.getAttribute('data-i18n-placeholder');
+        const value = translations[key];
         if (value) {
           element.placeholder = value;
         }
