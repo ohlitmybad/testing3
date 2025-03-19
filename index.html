@@ -1710,15 +1710,28 @@ function calculateEuclideanDifference(data1, data2) {
           // Format the name cell to display name and team more clearly
           const nameText = teamData[i];
           
+          // Parse the player information from the name string
+          // Format: "Player Name 24/25 (Team, Age) - Minutes min"
+          const nameMatch = nameText.match(/(.*?)\s+(\d+\/\d+)\s+\((.*?),\s+(.*?)\)\s+-\s+(\d+)\s+min/);
+          
+          if (nameMatch) {
+            const playerName = nameMatch[1];
+            const season = nameMatch[2];
+            const team = nameMatch[3];
+            const age = nameMatch[4];
+            
+            // Create a formatted display with better spacing and centered content
+            td.innerHTML = `
+              <div style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 4px; align-items: center; text-align: center;">
+                <div style="font-weight: 600; font-size: 13px;">${playerName}</div>
+                <div style="color: #777; font-size: 11px; margin-top: 2px;">${team}, ${age} <span style="opacity: 0.8;">${season}</span></div>
+              </div>
+            `;
+          }
         }
         if (i === 2) {
-          td.style.textAlign = 'center'; /* Center align the text */
           td.style.whiteSpace = 'normal'; /* Allow text to wrap */
-          td.style.overflow = 'visible';
-          td.style.textOverflow = 'clip';
-          td.style.minHeight = '50px'; /* Increase minimum height */
-          td.style.height = 'auto';
-          td.style.verticalAlign = 'top';
+
 
 
         }
